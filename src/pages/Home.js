@@ -20,6 +20,8 @@ import Icon3 from 'react-native-vector-icons/Entypo';
 import Upload from './Upload';
 
 const { width, height } = Dimensions.get('window');
+console.log(height);
+
 //获取日期对象
 let myDate = new Date();
 //获取年份
@@ -61,9 +63,7 @@ export default class Home extends Component {
     };
 
     componentWillMount() {
-        setTimeout( () => {
-            this.getWeather();
-        });
+        this.getWeather();
         //this.getDouban();
     }
 
@@ -107,7 +107,7 @@ export default class Home extends Component {
                         </TouchableOpacity>
                     </View>
 
-                    <View style = {{position: 'absolute', marginTop: 0.75 * height+20, flexDirection: 'row', marginLeft: 10}}>
+                    <View style = {styles.location}>
                         <Icon3
                             name = "location-pin"
                             size = {20}
@@ -134,7 +134,7 @@ export default class Home extends Component {
                                 paddingTop: 10,
                                 marginHorizontal: 0.5,
                                 alignItems: 'center',
-                                height: 0.25*height-50,
+                                height: 0.2*height,
                                 width: 0.25*width,
                             }}
                         >
@@ -149,7 +149,7 @@ export default class Home extends Component {
                                 paddingTop: 10,
                                 marginHorizontal: 0.5,
                                 alignItems: 'center',
-                                height: 0.25*height-50,
+                                height: 0.2*height,
                                 width: 0.125*width,
                             }}
                         >
@@ -163,7 +163,7 @@ export default class Home extends Component {
                                 paddingTop: 10,
                                 marginHorizontal: 0.5,
                                 alignItems: 'center',
-                                height: 0.25*height-50,
+                                height: 0.2*height,
                                 width: 0.125*width,
                             }}
                         >
@@ -177,7 +177,7 @@ export default class Home extends Component {
                                 paddingTop: 10,
                                 marginHorizontal: 0.5,
                                 alignItems: 'center',
-                                height: 0.25*height-50,
+                                height: 0.2*height,
                                 width: 0.25*width,
                             }}
                         >
@@ -192,7 +192,7 @@ export default class Home extends Component {
                                 paddingTop: 10,
                                 marginHorizontal: 0.5,
                                 alignItems: 'center',
-                                height: 0.25*height-50,
+                                height: 0.2*height,
                                 width: 0.25*width,
                             }}
                         >
@@ -241,25 +241,6 @@ export default class Home extends Component {
                 console.error(error);
             });
     };
-
-
-    getDouban = () => {
-        return fetch('https://api.douban.com/v2/movie/subject/1291858', {
-            method: 'GET',
-        })
-            .then((response) => response.text())
-            .then((responseText) => {
-                const json = JSON.parse(responseText);
-                this.setState({
-                    year: json.year,
-                });
-                //console.log(this.state.pm2_5)
-                //console.log(typeof(this.state.pm2_5))
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    }
 }
 
 styles = StyleSheet.create({
@@ -268,7 +249,12 @@ styles = StyleSheet.create({
         justifyContent:'space-between',
         marginVertical:8,
         marginHorizontal:5,
-        marginTop:0.04*height,
+        ...Platform.select({
+            ios:{
+                marginTop:0.04*height,
+            },
+        }),
+
     },
     headingIcon:{
         width: 40,
@@ -299,9 +285,15 @@ styles = StyleSheet.create({
         backgroundColor:'transparent',
         marginHorizontal:0.08*width,
     },
+    location:{
+        position: 'absolute',
+        marginTop:0.75 * height,
+        flexDirection: 'row',
+        marginLeft: 10
+    },
     weather:{
         position:'absolute',
-        marginTop:0.75*height+50,
+        marginTop:0.8*height,
         flexDirection:'row',
         justifyContent:'space-between'
     },
