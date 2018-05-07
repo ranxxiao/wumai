@@ -56,7 +56,10 @@ export default class Upload extends Component {
                      onPress={()=>navigate('Home')}
               />
             </TouchableOpacity>
-            <TouchableOpacity onPress={this.choosePic.bind(this)}>
+            <TouchableOpacity
+                onPress={this.choosePic.bind(this)}
+                style={{width:200,height:40,justifyContent:'center',alignItems:'center',backgroundColor:'transparent',}}
+            >
               <Text>点击打开图片</Text>
             </TouchableOpacity>
             <TouchableOpacity
@@ -74,20 +77,12 @@ export default class Upload extends Component {
           </View>
 
           <View
-              style={{height:0.085*height, backgroundColor:'lightblue', flexDirection:'row', justifyContent:'space-between',alignItems:'center'}}
+              style={{position:'absolute',marginTop:524/640*height+40+0.04*height,width:width,height:height-(524/640*height+40+0.04*height), backgroundColor:'lightblue', flexDirection:'row', justifyContent:'space-between',alignItems:'center'}}
           >
             <View style={{flexDirection:'row', justifyContent:'flex-start', marginLeft:140}}>
               <Text style={styles.pmText}>PM2.5：</Text>
               <Text style={styles.pmText}>{this.state.value}</Text>
             </View>
-
-            <TouchableOpacity
-                onPress={()=>{alert('添加自定义水印')}}
-                style={{width:100, flexDirection:'row', justifyContent:'flex-end'}}
-            >
-              <Icon5 name="add" size={50} color="#4E84B0"/>
-            </TouchableOpacity>
-
           </View>
         </View>
     );
@@ -175,11 +170,6 @@ styles = StyleSheet.create({
     flexDirection:'row',
     justifyContent:'space-between',
 
-  },
-  imageBox:{
-    backgroundColor:'green',
-    width:360,
-    height:300,
   },
   pmText:{
     fontSize:30,
