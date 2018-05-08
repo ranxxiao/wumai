@@ -13,8 +13,6 @@ import {
   Dimensions,
 } from 'react-native';
 import Icon3 from 'react-native-vector-icons/Entypo';
-import Icon4 from 'react-native-vector-icons/Feather';
-import Icon5 from 'react-native-vector-icons/MaterialIcons';
 import Home from './Home';
 
 const {width, height} = Dimensions.get('window');
@@ -50,34 +48,90 @@ export default class Upload extends Component {
     const { navigate } = this.props.navigation;
     return(
         <View style={styles.content}>
-          <View style={{flexDirection:'row', justifyContent:'space-between',alignItems:'center',marginTop:0.04*height}}>
-            <TouchableOpacity style={{width:40,height:40,justifyContent:'center',alignItems:'center',backgroundColor:'transparent',}}>
+          <View style={{
+              flexDirection:'row',
+              justifyContent:'space-between',
+              alignItems:'center',
+              ...Platform.select({
+                  ios:{
+                      marginTop:0.04*height
+                  },
+              })}}>
+            <TouchableOpacity style={{
+                width:40,
+                height:40,
+                justifyContent:'center',
+                alignItems:'center',
+                backgroundColor:'transparent',
+            }}>
               <Icon3 name="reply" size={40} color="#4E84B0"
                      onPress={()=>navigate('Home')}
               />
             </TouchableOpacity>
             <TouchableOpacity
                 onPress={this.choosePic.bind(this)}
-                style={{width:200,height:40,justifyContent:'center',alignItems:'center',backgroundColor:'transparent',}}
+                style={{
+                    width:200,
+                    height:40,
+                    justifyContent:'center',
+                    alignItems:'center',
+                    backgroundColor:'transparent',
+                }}
             >
               <Text>点击打开图片</Text>
             </TouchableOpacity>
             <TouchableOpacity
-                onPress={()=>{alert('分享检测结果至朋友圈')}}
-                style={{width:40,height:40,justifyContent:'center',alignItems:'center',backgroundColor:'transparent',}}
+                onPress={()=>{alert('分享结果至朋友圈')}}
+                style={{
+                    width:40,
+                    height:40,
+                    justifyContent:'center',
+                    alignItems:'center',
+                    backgroundColor:'transparent',
+                }}
             >
               <Icon3 name="forward" size={40} color="#4E84B0"/>
             </TouchableOpacity>
           </View>
 
-          <View style={{alignItems:'center',width:width,height:524/640*height,backgroundColor:'white'}}>
+          <View style={{
+              alignItems:'center',
+              width:width,
+              height:524/640*height,
+              backgroundColor:'white'
+          }}>
             <ImageBackground source={this.state.avatarSource} style={{width:width,height:524/640*height}}>
-              <Text style={{position:'absolute',top:480/640*height,left:10,color:'rgba(255,255,255,0.6)',fontSize:20,fontFamily:'Gill Sans',backgroundColor:'transparent',}}>MCPRL</Text>
+              <Text style={{
+                  position:'absolute',
+                  top:480/640*height,
+                  left:10,
+                  color:'rgba(255,255,255,0.6)',
+                  fontSize:20,
+                  fontFamily:'Gill Sans',
+                  backgroundColor:'transparent',
+              }}>
+                  MCPRL</Text>
             </ImageBackground>
           </View>
 
           <View
-              style={{position:'absolute',marginTop:524/640*height+40+0.04*height,width:width,height:height-(524/640*height+40+0.04*height), backgroundColor:'lightblue', flexDirection:'row', justifyContent:'space-between',alignItems:'center'}}
+              style={{
+                  position:'absolute',
+                  ...Platform.select({
+                      ios:{
+                          marginTop:524/640*height+40+0.04*height,
+                          height:height-(524/640*height+40+0.04*height)
+                      },
+                      android:{
+                          marginTop:524/640*height+40,
+                          height:height-(524/640*height+40),
+                      }}),
+                  width:width,
+                  backgroundColor:'lightblue',
+                  flexDirection:'row',
+                  justifyContent:'space-between',
+                  alignItems:'center'
+              }}
           >
             <View style={{flexDirection:'row', justifyContent:'flex-start', marginLeft:140}}>
               <Text style={styles.pmText}>PM2.5：</Text>
@@ -160,17 +214,21 @@ export default class Upload extends Component {
 
 
 styles = StyleSheet.create({
-  content:{
-    flex:1,
-    flexDirection:'column',
-    justifyContent:'space-between',
-    //alignItems:'center',
-  },
-  icons:{
-    flexDirection:'row',
-    justifyContent:'space-between',
-
-  },
+    topBar:{
+        flexDirection:'row',
+        justifyContent:'space-between',
+        alignItems:'center',
+        marginTop:0.04*height
+    },
+    content:{
+        flex:1,
+        flexDirection:'column',
+        justifyContent:'space-between',
+    },
+    icons:{
+        flexDirection:'row',
+        justifyContent:'space-between',
+    },
   pmText:{
     fontSize:30,
     fontFamily:'Gill Sans',
