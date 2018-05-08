@@ -123,8 +123,8 @@ export default class Upload extends Component {
                           height:height-(524/640*height+40+0.04*height)
                       },
                       android:{
-                          marginTop:524/640*height+40,
-                          height:height-(524/640*height+40),
+                          marginTop:524/640*height+30,
+                          height:height-(524/640*height+40)-10,
                       }}),
                   width:width,
                   backgroundColor:'lightblue',
