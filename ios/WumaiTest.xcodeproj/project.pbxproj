@@ -43,7 +43,7 @@
 		5D0E75AFBFEE471D998F64B4 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B3B9980C31254115BD32293D /* MaterialIcons.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		9247EEB8777D4968BCC05D72 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9974BAD6F8C94DFE8E473DBF /* libRNImagePicker.a */; };
+		9247EEB8777D4968BCC05D72 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9974BAD6F8C94DFE8E473DBF /* libRNImagePicker.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		94D9A5C07BB745F8BBF14159 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 62E316EE5AF74C9193949B29 /* MaterialCommunityIcons.ttf */; };
 		9816FFE609A84B178A7965DA /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0945AB0D22E9426BAE1F0CE4 /* libBVLinearGradient.a */; };
 		9FF105D1FC3C4CCEA6037CEB /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A521A028420A4382BC758227 /* FontAwesome.ttf */; };

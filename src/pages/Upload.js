@@ -161,7 +161,7 @@ export default class Upload extends Component {
       }
       else {
         let source = { uri:  response.uri };
-        //let time = { timestamp:  response.timestamp };
+        let time = { timestamp:  response.timestamp };
         //let longitude = { longitude:  response.longitude };
         //let longtitude = { longtitude: response.longtitude}
         // You can also display the image using data:
@@ -170,7 +170,7 @@ export default class Upload extends Component {
         this.setState({
           //longitudeValue: longitude,
           avatarSource: source,
-          //timeStamp: time,
+          timeStamp: time,
           imagePath:imagePath,
         });
 
@@ -183,7 +183,7 @@ export default class Upload extends Component {
 
         let formData = new FormData();
         formData.append('img', file); //这里的file要与后台名字对应
-        //formData.append('time', this.state.timeStamp.timestamp);
+        formData.append('time', this.state.timeStamp.timestamp);
         //formData.append('longtitude', longtitudeValue);
 
         fetch(url,{
