@@ -143,11 +143,11 @@ export default class Upload extends Component {
   }
 
   //选择照片按钮点击
- choosePic() {
+ choosePic = () => {
     ImagePicker.showImagePicker(options, (response) => {
       this.setState({
         value: '',
-      })
+      });
       console.log('Response = ', response);
 
       if (response.didCancel) {
@@ -178,7 +178,7 @@ export default class Upload extends Component {
         //console.log(typeof(this.state.timeStamp.toString()));
         //console.log(this.state.imagePath);
 
-        let url = 'http://10.112.253.25:5003/upload'; //接口地址
+        let url = 'http://10.112.105.109:5003/upload'; //接口地址
         let file = { uri:this.state.imagePath.path, type:'multipart/form-data', name:'image.png' } ; //file中这三个元素缺一不可
 
         let formData = new FormData();
@@ -186,7 +186,7 @@ export default class Upload extends Component {
         formData.append('time', this.state.timeStamp.timestamp);
         //formData.append('longtitude', longtitudeValue);
 
-        fetch(url,{
+        return fetch(url,{
           method: 'POST',
           headers: {
             'Content-Type': 'multipart/form-data',
