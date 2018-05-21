@@ -40,7 +40,6 @@ let currentDate = year + '-' + monthMap + '-' + day + '  ' + '星期' + week;
 
 console.log(currentDate);
 
-
 export default class Home extends Component {
     static navagationOptions = {
         title: '首页',

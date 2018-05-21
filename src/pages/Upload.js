@@ -17,6 +17,13 @@ import Home from './Home';
 
 const {width, height} = Dimensions.get('window');
 
+const instructions = Platform.select({
+    ios: 'Press Cmd+R to reload,\n' +
+    'Cmd+D or shake for dev menu',
+    android: 'Double tap R on your keyboard to reload,\n' +
+    'Shake or press menu button for dev menu',
+});
+
 //图片选择器
 let ImagePicker = require('react-native-image-picker');
 //图片选择器参数设置
@@ -28,8 +35,13 @@ let options = {
     storageOptions: {
         skipBackup: true,
         path: 'images',
-        cameraRoll:'true',
-        waitUntilSaved:'true',
+        ...Platform.select({
+            ios:{
+                cameraRoll:'true',
+                waitUntilSaved:'true',
+            }
+        }),
+
     }
 };
 
@@ -45,7 +57,6 @@ export default class Upload extends Component {
             avatarSource: null,
             imagePath: {},
             value: '',
-            myTime:'',
         }
     }
 
