@@ -27,7 +27,9 @@ let options = {
     chooseFromLibraryButtonTitle: '相册图片',
     storageOptions: {
         skipBackup: true,
-        path: 'images'
+        path: 'images',
+        cameraRoll:'true',
+        waitUntilSaved:'true',
     }
 };
 
@@ -43,6 +45,7 @@ export default class Upload extends Component {
             avatarSource: null,
             imagePath: {},
             value: '',
+            myTime:'',
         }
     }
 

@@ -38,7 +38,7 @@ let week = weekMap.get(thisWeek);
 //生成日期
 let currentDate = year + '-' + monthMap + '-' + day + '  ' + '星期' + week;
 
-//console.log(currentDate);
+console.log(currentDate);
 
 
 export default class Home extends Component {
